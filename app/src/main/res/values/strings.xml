@@ -21,4 +21,5 @@
     <string name="lemon_empty_glass">Click to start again!</string>
     <string name="squeeze_count">Squeeze count: %1$d, keep squeezing!</string>
     <string name="content_description_lemonTree">This is a fragrant and beautiful lemon tree!</string>
+    <string name="error">Something went wrong.Please contact customer support!</string>
 </resources>
