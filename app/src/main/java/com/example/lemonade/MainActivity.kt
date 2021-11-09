@@ -142,18 +142,17 @@ class MainActivity : AppCompatActivity() {
      */
     private fun setViewElements() {
         val textAction: TextView = findViewById(R.id.text_action)
-        val lemonImage: ImageView = findViewById(R.id.image_lemon_state)
         // TODO: set up a conditional that tracks the lemonadeState
         val stringsResource = when (lemonadeState) {
-            "select" -> R.string.lemon_select
+            SELECT -> R.string.lemon_select
             SQUEEZE -> R.string.lemon_squeeze
             DRINK -> R.string.lemon_drink
             RESTART -> R.string.lemon_empty_glass
             else -> R.string.error
         }
 
-        val drawableResource = when (lemonadeState) {
-            "select" -> R.drawable.lemon_tree
+        val lemonImage= when (lemonadeState) {
+            SELECT -> setImageResource(R.drawable.lemon_tree
             SQUEEZE -> R.drawable.lemon_squeeze
             DRINK -> R.drawable.lemon_drink
             RESTART -> R.drawable.lemon_restart
@@ -161,7 +160,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         textAction.setText(stringsResource)
-        lemonImage.setImageResource(drawableResource)
+//        lemonImage.setImageResource(drawableResource)
 
 //        private fun setViewElements() {
 //            val textAction: TextView = findViewById(R.id.text_action)
