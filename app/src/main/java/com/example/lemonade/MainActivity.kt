@@ -81,59 +81,64 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-//    private fun clickLemonImage() {
+    private fun clickLemonImage() {
 
 //   My first approach.
 
+        when (lemonadeState) {
+            SELECT -> {
+                lemonadeState = SQUEEZE
+                lemonSize = lemonTree.pick()
+                squeezeCount = 0
+            }
+            SQUEEZE -> if (lemonSize == 0) {
+                    lemonadeState = DRINK
+                    lemonSize = - 1
+                } else {
+                    squeezeCount = squeezeCount + 1
+                    lemonSize = lemonSize - 1
+                }
+            DRINK -> {
+                lemonadeState = RESTART
+                lemonSize = -1
+            }
+
+            RESTART -> lemonadeState = SELECT
+        }
+        setViewElements()
+    }
+
+//    private fun clickLemonImage() {
+//
 //        when (lemonadeState) {
+//
 //            SELECT -> {
 //                lemonadeState = SQUEEZE
 //                lemonSize = lemonTree.pick()
 //                squeezeCount = 0
 //            }
-//            SQUEEZE -> if (lemonSize == 0) {
+//
+//            SQUEEZE -> {
+//                squeezeCount += 1
+//                lemonSize -= 1
+//                if (lemonSize == 0) {
 //                    lemonadeState = DRINK
-//                    lemonSize = - 1
-//                } else {
-//                    squeezeCount = squeezeCount + 1
-//                    lemonSize = lemonSize - 1
 //                }
-//            DRINK -> {
-//                lemonadeState = RESTART
-//                lemonSize = -1
 //            }
 //
-//            RESTART -> lemonadeState = SELECT
+//            DRINK -> {
+//                lemonSize = -1
+//                lemonadeState = RESTART
+//            }
+//
+//            RESTART -> {
+//                lemonadeState = SELECT
+//            }
 //        }
+//
+//        setViewElements()
 //    }
 
-      private fun clickLemonImage() {
-          when (lemonadeState) {
-
-              SELECT -> {
-                  lemonadeState = SQUEEZE
-                  lemonSize = lemonTree.pick()
-                  squeezeCount = 0
-              }
-
-              SQUEEZE -> {
-                  squeezeCount += 1
-                  lemonSize -= 1
-                  if (lemonSize == 0) {
-                      lemonadeState = DRINK
-                  }
-              }
-
-              DRINK -> {
-                  lemonSize = -1
-                  lemonadeState = RESTART
-              }
-
-              RESTART -> {
-                  lemonadeState = SELECT
-              }
-          }
-      }
 
 
 //  My first approach:
@@ -142,7 +147,7 @@ class MainActivity : AppCompatActivity() {
 //        val textAction: TextView = findViewById(R.id.text_action)
 //        val lemonImage: ImageView = findViewById(R.id.image_lemon_state)
 //        val stringsResource = when (lemonadeState) {
-//            "select" -> R.string.lemon_select
+//            SELECT -> R.string.lemon_select
 //            SQUEEZE -> R.string.lemon_squeeze
 //            DRINK -> R.string.lemon_drink
 //            RESTART -> R.string.lemon_empty_glass
@@ -150,7 +155,7 @@ class MainActivity : AppCompatActivity() {
 //        }
 //
 //        val drawableResource = when (lemonadeState) {
-//            "select" -> R.drawable.lemon_tree
+//            SELECT -> R.drawable.lemon_tree
 //            SQUEEZE -> R.drawable.lemon_squeeze
 //            DRINK -> R.drawable.lemon_drink
 //            RESTART -> R.drawable.lemon_restart
@@ -159,6 +164,7 @@ class MainActivity : AppCompatActivity() {
 //
 //        textAction.setText(stringsResource)
 //        lemonImage.setImageResource(drawableResource)
+//    }
 
 //  My second approach:
 
