@@ -71,7 +71,6 @@ class MainActivity : AppCompatActivity() {
 
     /**
      * === DO NOT ALTER THIS METHOD ===
-     *
      * This method saves the state of the app if it is put in the background.
      */
     override fun onSaveInstanceState(outState: Bundle) {
@@ -110,7 +109,7 @@ class MainActivity : AppCompatActivity() {
 
         when (lemonadeState) {
 
-            "select" -> {
+            SELECT -> {
                 lemonadeState = SQUEEZE
                 lemonSize = lemonTree.pick()
                 squeezeCount = 0
@@ -189,7 +188,7 @@ class MainActivity : AppCompatActivity() {
 //            }
 //            textAction.setText(stringsResource)
 //            lemonImage.setImageResource(drawableResource)
-//        The ABOVE is NOT working.
+//        The ABOVE are NOT working.
 
     private fun setViewElements() {
         val textAction: TextView = findViewById(R.id.text_action)
@@ -218,7 +217,6 @@ class MainActivity : AppCompatActivity() {
 
     /**
      * === DO NOT ALTER THIS METHOD ===
-     *
      * Long clicking the lemon image will show how many times the lemon has been squeezed.
      */
     private fun showSnackbar(): Boolean {
