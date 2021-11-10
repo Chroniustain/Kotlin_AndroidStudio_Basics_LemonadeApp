@@ -58,6 +58,7 @@ class MainActivity : AppCompatActivity() {
         // === END IF STATEMENT ===
 
         lemonImage = findViewById(R.id.image_lemon_state)
+        lemonadeState = SELECT
         setViewElements()
         lemonImage!!.setOnClickListener {
             // TODO: call the method that handles the state when the image is clicked
@@ -81,7 +82,7 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    private fun clickLemonImage() {
+//    private fun clickLemonImage() {
 
 //   My first approach.
 
@@ -107,32 +108,33 @@ class MainActivity : AppCompatActivity() {
 //        }
 //    }
 
-        when (lemonadeState) {
+      private fun clickLemonImage() {
+          when (lemonadeState) {
 
-            SELECT -> {
-                lemonadeState = SQUEEZE
-                lemonSize = lemonTree.pick()
-                squeezeCount = 0
-            }
+              SELECT -> {
+                  lemonadeState = SQUEEZE
+                  lemonSize = lemonTree.pick()
+                  squeezeCount = 0
+              }
 
-            SQUEEZE -> {
-                squeezeCount += 1
-                lemonSize -= 1
-                if (lemonSize == 0) {
-                    lemonadeState = DRINK
-                }
-            }
+              SQUEEZE -> {
+                  squeezeCount += 1
+                  lemonSize -= 1
+                  if (lemonSize == 0) {
+                      lemonadeState = DRINK
+                  }
+              }
 
-            DRINK -> {
-                lemonSize = -1
-                lemonadeState = RESTART
-            }
+              DRINK -> {
+                  lemonSize = -1
+                  lemonadeState = RESTART
+              }
 
-            RESTART -> {
-                lemonadeState = SELECT
-            }
-        }
-    }
+              RESTART -> {
+                  lemonadeState = SELECT
+              }
+          }
+      }
 
 
 //  My first approach:
@@ -191,7 +193,25 @@ class MainActivity : AppCompatActivity() {
 //            }
 //            textAction.setText(stringsResource)
 //            lemonImage.setImageResource(drawableResource)
-//        The ABOVE are NOT working.
+
+// My third approach
+//    private fun setViewElements() {
+//        val textAction: TextView = findViewById(R.id.text_action)
+//        if (lemonadeState == SELECT) {
+//            textAction.text = getString(R.string.lemon_select)
+//            lemonImage?.setImageResource(R.drawable.lemon_tree)
+//        } else if (lemonadeState == SQUEEZE) {
+//            textAction.text = getString(R.string.lemon_squeeze)
+//            lemonImage?.setImageResource(R.drawable.lemon_squeeze)
+//        } else if (lemonadeState == DRINK) {
+//            textAction.text = getString(R.string.lemon_drink)
+//            lemonImage?.setImageResource(R.drawable.lemon_drink)
+//        } else {
+//            textAction.text = getString(R.string.lemon_empty_glass)
+//            lemonImage?.setImageResource(R.drawable.lemon_restart)
+//        }
+//    }
+
 
     private fun setViewElements() {
         val textAction: TextView = findViewById(R.id.text_action)
