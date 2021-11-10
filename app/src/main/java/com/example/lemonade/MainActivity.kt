@@ -123,10 +123,13 @@ class MainActivity : AppCompatActivity() {
                 }
             }
 
-
             DRINK -> {
                 lemonSize = -1
                 lemonadeState = RESTART
+            }
+
+            RESTART -> {
+                lemonadeState = SELECT
             }
         }
     }
